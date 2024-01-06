@@ -1,0 +1,530 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>并查集 | EraYes</title><meta name="keywords" content="Cpp,算法"><meta name="author" content="EraYes"><meta name="copyright" content="EraYes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="并查集"><meta name="application-name" content="并查集"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta name="description" content="并查集  并查集是一种用于处理集合合并和查询的数据结构，常用于连通性问题。它可以动态地添加和合并集合，并快速地查询两个元素是否在同一个集合中。                          ————chatGPT   并查集被很多OIer认为是最简洁而优雅的数据结构之一，主要用于解决一些元素分组的问题。它管理一系列不相交的集合，并支持两种操作：  合并（Union）：把两个不相交的集合合并为一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并查集">
+<meta property="og:url" content="http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/index.html">
+<meta property="og:site_name" content="EraYes">
+<meta property="og:description" content="并查集  并查集是一种用于处理集合合并和查询的数据结构，常用于连通性问题。它可以动态地添加和合并集合，并快速地查询两个元素是否在同一个集合中。                          ————chatGPT   并查集被很多OIer认为是最简洁而优雅的数据结构之一，主要用于解决一些元素分组的问题。它管理一系列不相交的集合，并支持两种操作：  合并（Union）：把两个不相交的集合合并为一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64bf58981ddac507cc907e7c.webp">
+<meta property="article:published_time" content="2023-07-13T19:58:29.000Z">
+<meta property="article:modified_time" content="2023-12-08T12:58:33.000Z">
+<meta property="article:author" content="EraYes">
+<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/64bf58981ddac507cc907e7c.webp"><link rel="shortcut icon" href="/img/avatar.webp"><link rel="canonical" href="http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/"><link rel="preconnect" href="//npm.elemecdn.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '并查集',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-08 12:58:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="EraYes"><div id="web_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="fa-solid fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title Yunmobei">EraYes</div><i class="fa-solid fa-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:EraYes.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="站内搜索" accesskey="s"><i class="fa-solid fa-magnifying-glass"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="浅色和深色模式转换" onclick="EraYes.switchDarkMode()"><i class="fa-solid fa-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><input id="center-console" type="checkbox"/><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="fa-solid fa-arrow-up"></i><span id="percent" onclick="EraYes.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="fa-solid fa-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Cpp/">Cpp</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Cpp/" tabindex="-1"> <span> <i class="fa-solid fa-hashtag"></i>Cpp</span></a><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1"> <span> <i class="fa-solid fa-hashtag"></i>算法</span></a></span></div></div><h1 class="post-title">并查集</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-solid fa-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T19:58:29.000Z" title="发表于 2023-07-13 19:58:29">2023-07-13</time><span class="post-meta-separator"></span><i class="fa-solid fa-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:33.000Z" title="更新于 2023-12-08 12:58:33">2023-12-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="fa-solid fa-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">716</span><span class="post-meta-separator"></span><i class="fa-solid fa-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为浙江"><i class="fa-solid fa-location-dot"></i>浙江</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pic.imgdb.cn/item/64bf58981ddac507cc907e7c.webp"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>并查集</h1>
+<blockquote>
+<p><em>并查集是一种用于处理集合合并和查询的数据结构，常用于连通性问题。它可以动态地添加和合并集合，并快速地查询两个元素是否在同一个集合中。</em>                          ————chatGPT</p>
+</blockquote>
+<hr>
+<p>并查集被很多OIer认为是最简洁而优雅的数据结构之一，主要用于解决一些<strong>元素分组</strong>的问题。它管理一系列<strong>不相交的集合</strong>，并支持两种操作：</p>
+<ul>
+<li><strong>合并</strong>（Union）：把两个不相交的集合合并为一个集合。</li>
+<li><strong>查询</strong>（Find）：查询两个元素是否在同一个集合中。</li>
+</ul>
+<blockquote>
+<p>并查集的时间复杂度主要取决于查找的复杂度，因为合并的复杂度一般较小。一般而言，使用路径压缩和按秩合并的优化方法，可以使单次操作的时间复杂度达到 <code>O(log n)</code>。</p>
+</blockquote>
+<hr>
+<h4 id="基本代码">基本代码</h4>
+<ul>
+<li><strong>数据</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fa[MAXN]; <span class="comment">//代表节点的父节点</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>初始化</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        fa[i] = i; </span><br><span class="line">    <span class="comment">// 初始状态所有节点的父节点都是它自己</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于<code>inline</code>函数， 看<a target="_blank" rel="noopener" href="https://blog.csdn.net/lym940928/article/details/88368363">这里</a> <s>（留个坑， 以后有空讲讲）</s></p>
+</blockquote>
+<ul>
+<li><strong>查询</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[x] == x)</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">find</span>(fa[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>合并</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fa[<span class="built_in">find</span>(i)] = <span class="built_in">find</span>(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="优化">优化</h4>
+<blockquote>
+<p>并查集的优化主要包括<strong>路径压缩</strong>和<strong>按秩合并</strong>两种方法。</p>
+</blockquote>
+<ul>
+<li><strong>1. 路径压缩</strong></li>
+</ul>
+<blockquote>
+<p>在查找一个元素所在的集合时，可以将路径上的所有节点都直接连接到根节点上，这样可以使得后续的查找操作更快。<strong>路径压缩的实现方法：</strong></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x == fa[x] ? x : (fa[x] = <span class="built_in">find</span>(fa[x]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2. 按秩合并</strong></li>
+</ul>
+<blockquote>
+<p>这种优化方法也叫<code>加权标记法</code>，在合并两个集合时，可以比较它们的<code>深度(也叫秩)</code>，将深度较小的集合连接到深度较大的集合上，这样可以减少树的深度，提高操作效率。<strong>按秩合并的实现方法：</strong></p>
+</blockquote>
+<ul>
+<li><strong>初始化</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        fa[i] = i;</span><br><span class="line">        rank[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>合并</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="built_in">find</span>(i), y = <span class="built_in">find</span>(j);    <span class="comment">//先找到两个根节点</span></span><br><span class="line">    <span class="keyword">if</span> (rank[x] &lt;= rank[y])</span><br><span class="line">        fa[x] = y;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        fa[y] = x;</span><br><span class="line">    <span class="keyword">if</span> (rank[x] == rank[y] &amp;&amp; x != y)</span><br><span class="line">        rank[y]++; </span><br><span class="line">        <span class="comment">//如果深度相同且根节点不同，则新的根节点的深度+1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>综合使用路径压缩和按秩合并可以达到最优的时间复杂度，即单次操作的时间复杂度为 <code>O(log n)</code>。</li>
+</ul>
+<hr>
+<p>参考文献：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93647900">算法学习笔记(1) : 并查集 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/the_zed/article/details/105126583">算法与数据结构—— 并查集_酱懵静的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/125604577">通俗易懂地讲解《并查集》 - 知乎 (zhihu.com)</a> python文献</p>
+</article><div class="post-copyright"><i class="fa-solid fa-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/">原创</a><a class="post-copyright-title"><span>并查集</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"></span><a class="link" href="http://blog.EraYes.top">EraYes</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a class="link" href="http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/">http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/</a></span><span class="copy-button" onclick="rm.copyPageUrl('http://blog.erayes.top/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/')"><i class="fa-solid fa-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请获取<a href="http://blog.EraYes.top" target="_blank">EraYes</a>许可 ！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/03/hello-world/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58951ddac507cc907a03.webp" onerror="onerror=null;src='/img/avatar.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/13/RMQ%E9%97%AE%E9%A2%98%E4%B8%8EST%E7%AE%97%E6%B3%95/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58991ddac507cc907f2b.webp" onerror="onerror=null;src='/img/avatar.webp'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RMQ问题与ST算法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fa-solid fa-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/13/OI%20wiki/" title="OI wiki"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e81ddac507cc90f555.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">OI wiki</div></div></a></div><div><a href="/2023/07/13/RMQ%E9%97%AE%E9%A2%98%E4%B8%8EST%E7%AE%97%E6%B3%95/" title="RMQ问题与ST算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58991ddac507cc907f2b.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">RMQ问题与ST算法</div></div></a></div><div><a href="/2023/07/13/goto%E8%AF%AD%E5%8F%A5/" title="goto语句"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58da1ddac507cc90df73.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">goto语句</div></div></a></div><div><a href="/2023/07/13/template%E6%A8%A1%E6%9D%BF/" title="template模板"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e61ddac507cc90f265.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">template模板</div></div></a></div><div><a href="/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="搜索算法详解"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58d81ddac507cc90dc29.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">搜索算法详解</div></div></a></div><div><a href="/2023/07/13/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" title="最小生成树"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf589a1ddac507cc90818b.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">最小生成树</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fa-solid fa-comments"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div><div><div id="gitcus-warp"> <script async="async" crossorigin="anonymous" data-category-id="DIC_kwDOJ7a_tM4CbQ5g" data-category="General" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-loading="lazy" data-mapping="title" data-reactions-enabled="1" data-repo-id="R_kgDOJ7a_tA" data-repo="ERA-YES/ERA-YES.github.io" data-strict="0" data-theme="transparent_dark" src="https://giscus.app/client.js"></script></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"><a class="avatar-img" href="/about"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="avatar"/></a><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="writing_hand" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270d.png">✍️</g-emoji><span>on Studying</span></div></div></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name Yunmobei">EraYes</h1><div class="author-info__description">因为你的存在，因为伟大的戏剧正在上演</div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="fa-solid fa-up-right"></i></a></div><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/ERA-YES" target="_blank" title="Github"><i class="fa-brands fa-github faa-tada"></i></a><a class="social-icon faa-parent animated-hover" href="mailto:k@erayes.top" target="_blank" title="Email"><i class="fa-solid fa-envelope faa-tada"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fa-solid fa-bullhorn EraYes-shake"></i><span>公告</span></div><div class="announcement_content">请参见【更新日志】</div></div><div class="card-widget EraYes-right-widget" id="flip-card"><div id="flip-wrapper"><div id="flip-content"><div class="face"><div class="left"><span class="title" id="saying-title">因为伟大的戏剧正在上演</span><br/><span class="desc" id="saying-from">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div></div><div class="back face"><div class="left"><span class="title">因为伟大的戏剧正在上演</span><br/><span class="desc">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp"/></div></div></div></div><script>function hitokoto() {
+  fetch("https://v1.hitokoto.cn/?c=d&c=i&c=k?max_length=24")
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("saying-title").innerText = data.hitokoto;
+        let auther = data.from_who;
+        if (auther === null) {
+          document.getElementById("saying-from").innerText = "From " + data.from;
+        } else {
+          document.getElementById("saying-from").innerText = "From " + data.from + " By " + auther;
+        }
+    })
+    .catch(console.error);
+}
+
+hitokoto();
+
+const reflash = document.getElementById("flip-wrapper");
+reflash.addEventListener("click", hitokoto);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fa-solid fa-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">基本代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">优化</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fa-solid fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf591f1ddac507cc914481.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Collections库"/></a><div class="content"><a class="title" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库">Collections库</a><time datetime="2023-10-22T14:55:02.000Z" title="发表于 2023-10-22 14:55:02">2023-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/Leke%20Pad-L05%20Root%E6%88%90%E5%8A%9F/" title="Leke Pad-L05 Root成功"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/LekeRoot/magisk.png" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Leke Pad-L05 Root成功"/></a><div class="content"><a class="title" href="/2023/07/30/Leke%20Pad-L05%20Root%E6%88%90%E5%8A%9F/" title="Leke Pad-L05 Root成功">Leke Pad-L05 Root成功</a><time datetime="2023-07-30T17:12:37.000Z" title="发表于 2023-07-30 17:12:37">2023-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/vlfii/" title="vlfii"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/Vlfii/1.png" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="vlfii"/></a><div class="content"><a class="title" href="/2023/07/18/vlfii/" title="vlfii">vlfii</a><time datetime="2023-07-18T13:23:17.000Z" title="发表于 2023-07-18 13:23:17">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/PCB-NFC/" title="PCB-NFC"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/PBC-NFC/1.jpg" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="PCB-NFC"/></a><div class="content"><a class="title" href="/2023/07/18/PCB-NFC/" title="PCB-NFC">PCB-NFC</a><time datetime="2023-07-18T12:47:27.000Z" title="发表于 2023-07-18 12:47:27">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc91136f.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Github Actions实现Hexo自动部署"/></a><div class="content"><a class="title" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署">Github Actions实现Hexo自动部署</a><time datetime="2023-07-17T09:04:46.000Z" title="发表于 2023-07-17 09:04:46">2023-07-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:k@erayes.top" title="email"><i class="fa-solid fa-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" onclick="EraYes.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/ERA_YES" title="Github"><i class="fa-brands fa-github"></i></a></div><div id="EraYes-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="图片来源" target="_blank" href="https://wallhaven.cc/">图片来源</a><a class="footer-item" title="开往" target="_blank" href="https://github.com/travellings-link/travellings">开往</a><a class="footer-item" title="zeabur" target="_blank" href="https://zeabur.com/">zeabur</a><a class="footer-item" title="SuperBed" target="_blank" href="https://www.superbed.cn">SuperBed</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="友链" target="_blank" href="/links/">友链</a><a class="footer-item" title="标签" target="_blank" href="/tags/">标签</a><a class="footer-item" title="分类" target="_blank" href="/categories/">分类</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="fa-solid fa-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2024 By <a class="footer-bar-link" href="http://blog.EraYes.top" title="EraYes" target="_blank">EraYes</a></div></div><div id="footer-type-tips"></div><script src="https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  var configStrings = ["因为你的存在，因为伟大的戏剧在上演，因为你可以奉献一首诗","That you are here,that life exists and identity,that the powerful play goes on and you may contribute a verse"];
+  var typed = new Typed("#footer-type-tips", {
+    strings: configStrings,
+    startDelay: parseInt('200'),
+    backDelay: parseInt('2000'),
+    typeSpeed: parseInt('100'),
+    loop: 'true' === 'true',
+    backSpeed: parseInt('20')
+  });
+});</script></div><div class="footer-bar-right"><a class="footer-bar-link" href="/null"></a><a class="footer-bar-link" href="/null"></a></div></div></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='img/avatar.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fa-solid fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fa-solid fa-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fa-solid fa-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fa-solid fa-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fa-solid fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fa-solid fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fa-solid fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fa-solid fa-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="fa-solid fa-spinner EraYes-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+console.log = function () {};
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+});</script><script async src="/EraYes/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/katex@0.16.0/dist/katex.min.css"><script src="https://npm.elemecdn.com/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    EraYes.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: function () {
+        EraYes.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runFn)
+  }
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) EraYes.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: '',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"meta":["nick","mail","link"],"locale":{"placeholder":"生活明朗，万物可爱"}}))
+  }
+
+  const walineCSSLoad = document.getElementById('waline-css')
+
+  if (typeof Waline === 'object') {
+    walineCSSLoad ? initWaline() : getCSS('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.css','waline-css').then(initWaline)
+  }
+  else {
+    getCSS('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.css','waline-css').then(() => {
+      getScript('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.js').then(initWaline)
+    })
+  }
+}
+
+if ('Twikoo' === 'Waline' || !false) {
+  if (false) EraYes.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${EraYes.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | EraYes")[0];
+EraYes.initIndexEssay();
+EraYes.changeTimeInEssay();
+EraYes.removeBodyPaceClass();
+EraYes.qrcodeCreate();
+EraYes.changeTimeInAlbumDetail();
+EraYes.reflashEssayWaterFall();
+EraYes.sayhi();
+EraYes.addNavBackgroundInit();
+EraYes.setValueToBodyType();
+EraYes.catalogActive();
+EraYes.tagsPageActive();
+EraYes.categoriesBarActive();
+EraYes.topCategoriesBarScroll();
+EraYes.getCustomPlayList();
+EraYes.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.7/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div></body></html>
