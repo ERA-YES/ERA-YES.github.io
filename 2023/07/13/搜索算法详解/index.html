@@ -1,0 +1,597 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>搜索算法详解 | EraYes</title><meta name="keywords" content="Cpp,算法"><meta name="author" content="EraYes"><meta name="copyright" content="EraYes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="搜索算法详解"><meta name="application-name" content="搜索算法详解"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta name="description" content="#搜索算法  搜索算法，即对当前的状态空间进行枚举，以找到对于某一问题的特殊解或最优解，这类算法被广泛应用在图遍历，寻路,算法竞赛等之中，在信息学竞赛中，搜索算法是十分重要的一类算法，通常涉及图论和组合数学等复杂问题的求解。对于大范围的枚举，又衍生出各种各样的优化算法，通过剪枝、压缩空间、双向搜索等   搜索寻路可视化 传送门1 传送门2 传送门3  网页嵌入如下  点击查看          文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搜索算法详解">
+<meta property="og:url" content="http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="EraYes">
+<meta property="og:description" content="#搜索算法  搜索算法，即对当前的状态空间进行枚举，以找到对于某一问题的特殊解或最优解，这类算法被广泛应用在图遍历，寻路,算法竞赛等之中，在信息学竞赛中，搜索算法是十分重要的一类算法，通常涉及图论和组合数学等复杂问题的求解。对于大范围的枚举，又衍生出各种各样的优化算法，通过剪枝、压缩空间、双向搜索等   搜索寻路可视化 传送门1 传送门2 传送门3  网页嵌入如下  点击查看          文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64bf58d81ddac507cc90dc29.webp">
+<meta property="article:published_time" content="2023-07-13T20:39:08.000Z">
+<meta property="article:modified_time" content="2024-01-28T03:11:25.000Z">
+<meta property="article:author" content="EraYes">
+<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/64bf58d81ddac507cc90dc29.webp"><link rel="shortcut icon" href="/img/avatar.webp"><link rel="canonical" href="http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//npm.elemecdn.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '搜索算法详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-28 03:11:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="EraYes"><div id="web_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="fa-solid fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title Yunmobei">EraYes</div><i class="fa-solid fa-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:EraYes.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="站内搜索" accesskey="s"><i class="fa-solid fa-magnifying-glass"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="浅色和深色模式转换" onclick="EraYes.switchDarkMode()"><i class="fa-solid fa-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><input id="center-console" type="checkbox"/><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="fa-solid fa-arrow-up"></i><span id="percent" onclick="EraYes.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="fa-solid fa-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Cpp/">Cpp</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Cpp/" tabindex="-1"> <span> <i class="fa-solid fa-hashtag"></i>Cpp</span></a><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1"> <span> <i class="fa-solid fa-hashtag"></i>算法</span></a></span></div></div><h1 class="post-title">搜索算法详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-solid fa-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T20:39:08.000Z" title="发表于 2023-07-13 20:39:08">2023-07-13</time><span class="post-meta-separator"></span><i class="fa-solid fa-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="fa-solid fa-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.1k</span><span class="post-meta-separator"></span><i class="fa-solid fa-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为浙江"><i class="fa-solid fa-location-dot"></i>浙江</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pic.imgdb.cn/item/64bf58d81ddac507cc90dc29.webp"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>#搜索算法</p>
+<blockquote>
+<p><code>搜索算法</code>，即对当前的状态空间进行枚举，以找到对于某一问题的特殊解或最优解，这类算法被广泛应用在<code>图遍历</code>，<code>寻路</code>,<code>算法竞赛</code>等之中，在信息学竞赛中，搜索算法是十分重要的一类算法，通常涉及图论和组合数学等复杂问题的求解。对于大范围的枚举，又衍生出各种各样的优化算法，通过<code>剪枝</code>、<code>压缩空间</code>、<code>双向搜索</code>等</p>
+</blockquote>
+<ul>
+<li><strong>搜索寻路可视化</strong><br>
+<i class="fa-duotone fa-door-open"><strong><a target="_blank" rel="noopener" href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">传送门1</a></strong></i><br>
+<i class="fa-duotone fa-door-open"><strong><a target="_blank" rel="noopener" href="https://interactive-pathfinding.netlify.app/">传送门2</a></strong></i><br>
+<i class="fa-duotone fa-door-open"><strong><a target="_blank" rel="noopener" href="https://zaidsbaghal.github.io/Algorithm-Visualizer/">传送门3</a></strong></i></li>
+</ul>
+<h3 id="网页嵌入如下">网页嵌入如下</h3>
+<details>
+<summary>点击查看</summary>
+<iframe src="https://www.redblobgames.com/pathfinding/a-star/introduction.html" width='100%' height='500px'>
+</iframe>
+<iframe src="https://interactive-pathfinding.netlify.app/">
+</iframe>
+<iframe src="https://zaidsbaghal.github.io/Algorithm-Visualizer/">
+</iframe>
+</details>
+</br>
+<blockquote>
+<p><strong>文献</strong><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/6238029">A*，Dijkstra，BFS算法性能比较及A*算法的应用</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/6182419">彻底理解Dijkstra算法</a><br>
+<a target="_blank" rel="noopener" href="https://www.cnblogs.com/skywang12345/p/3711512.html">Dijkstra算法(一)之 C语言详解</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54510444">路径规划之 A* 算法</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83163899">常用距离算法详解</a></p>
+</blockquote>
+<h2 id="DFS">DFS</h2>
+<ul>
+<li>**DFS（Depth-First-Search）**即<code>深度优先搜索</code>。具体来说，DFS算法从起点开始遍历图，尽量沿着深度方向遍历下去，直到无法前进时回溯到上一个节点，继续遍历其它分支。DFS一般用于遍历或搜索一些树形结构或图结构的问题。在信息学竞赛中，DFS算法常用于解决<code>排列</code>、<code>组合</code>、<code>路径搜索</code>等一些组合问题，例如<code>全排列</code>、<code>八皇后</code>问题等。</li>
+</ul>
+<h2 id="BFS">BFS</h2>
+<ul>
+<li><strong>BFS（Breadth-First-Search</strong>）即<code>广度优先搜索</code>。BFS算法会按照层次分别访问每个节点，可以得到所有可能的路径中最短路径。BFS算法一般用于图上最短路径等问题上。在信息学竞赛中，BFS算法常用于解决图上的<code>最短路问题</code>、<code>迷宫路径</code>搜索等问题。</li>
+</ul>
+<h2 id="Dijkstra">Dijkstra</h2>
+<ul>
+<li><strong>Dijkstra</strong>可以看成时加权的BFS，在引入权值之后，算法在拓展时就可以考虑到不同的收益带来的效果，这图论搜索时，求解有向图和无向图的最短路径问题时就相对很优秀了，实际上在实际应用中，Dijkstra算法常用于解决<code>网络路由最短路径问题</code>、<code>制作地图应用程序</code>、<code>优化电路设计</code>、以及示例中的<code>游戏寻路</code>等问题。</li>
+<li>但是相对的，在权值都为1时，Dijkstra就和BFS差不多了</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img2023.cnblogs.com/blog/3163018/202306/3163018-20230606102843486-1635604432.gif" alt="动画1"><br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img2023.cnblogs.com/blog/3163018/202306/3163018-20230606102920011-2110401761.gif" alt="动画2"></p>
+<h2 id="A">A*</h2>
+<ul>
+<li>**A***是一种基于Dijkstra<code>启发式搜索算法</code>，能够有效地搜索最短路径，其目标是最小化当前路径的代价，同时通过加入启发函数剪枝掉明显不优的状态节点，从而尽可能降低搜索的时间复杂度。A<em>算法需要启发式函数的支持，因此在对路径搜索灵活度要求比较高的情况下，可以使用A</em>算法。</li>
+<li><strong>启发函数</strong>时A<em>算法中最重要的一部分，启发函数的选择直接关系到A</em>算法的效率和结果。它是一种能够对当前状态节点与目标状态距离进行有效估算的，用于衡量当前节点在搜索过程中离目标节点还有多远，从而选择合适的路径。</li>
+<li>
+<ul>
+<li>需要注意的是，当h(x)为0时，A<em>算法退化为Dijkstra算法，而当h(x)不为0时，A</em>算法具有更好的搜索效率。</li>
+</ul>
+</li>
+</ul>
+<h3 id="启发函数">启发函数</h3>
+<ul>
+<li>
+<p>**<a target="_blank" rel="noopener" href="https://oi-wiki.org/search/astar/">OI wiki</a>**中这样介绍，定义起点<code>s</code>，终点<code>t</code>，从起点（初始状态）开始的距离函数<code>g(x)</code>，到终点（最终状态）的距离函数<code>h(x)</code>，<code>h*(x)</code>，以及每个点的估价函数<code>f(x)=g(x)+h(x)</code>。</p>
+</li>
+<li>
+<p>但说实话，这些确实比较抽象，而且OI wiki讲的还不够详细，下面我来讲讲我的理解：</p>
+</li>
+<li>
+<ul>
+<li><em><strong>f(x) = g(x) + h(x)</strong></em></li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong>综合评价函数f(x)</strong> 其实就是当前状态的<code>地位或效益</code>，这个值更具题意当然总是越小越好，但在一些较抽象的数论题里，它也许还能代表<code>操作的价值</code>、<code>目前的做法和接下来的做法</code>，当然，这还是抽象，我们接着往下看</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong>路径长度g(x)</strong> 最好理解，其实就是<code>走过的步数</code>、<code>进行过的操作</code>，这个值用以储存其实状态到当前状态的路径长度</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong>启发函数估价函数h(x)</strong> 表示当前状态x到达目标状态的最短路径估计值，在图论里，它可以是<code>节点数和权值</code>，在八数码里，它则是与目标码不同的数字的<code>个数</code></li>
+</ul>
+</li>
+<li>
+<p>在<a target="_blank" rel="noopener" href="https://www.gamedev.net/reference/articles/article2003.asp">链接</a>中，你可以很清楚的看到在地图里这启发函数是如何运行的。这是一篇很好的文章，我也是在<code>CSDN</code>疯狂<code>“转载”</code> <code>包浆</code>中发现的</p>
+</li>
+</ul>
+<h3 id="关于距离">关于距离</h3>
+<ul>
+<li>在二维平面坐标系中的格点搜索问题中，选择怎样的距离尤其重要，但本人认为对于算法竞赛而言并不直接，因为大部分搜索题是图和数的关系</li>
+<li>我也查询一些有意思的距离函数，如果感兴趣的话你可以点开来看看，因为我也很感兴趣</li>
+</ul>
+<details>
+<summary>点击查看</summary>
+<h4 id="曼哈顿距离（Manhattan-Distance"><strong>曼哈顿距离（Manhattan Distance)</strong></h4>
+<p>**曼哈顿距离（Manhattan Distance)**即两点之间在网络格子上的距离，它是无法通过对角线移动到达目标点时，两点坐标差的绝对值之和，即x轴上的距离和y轴上的距离的和。在二维平面坐标系中，曼哈顿距离可以表示为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>p</mi><mo separator="true">,</mo><mi>q</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>x</mi></msub><mo>−</mo><msub><mi>q</mi><mi>x</mi></msub><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>y</mi></msub><mo>−</mo><msub><mi>q</mi><mi>y</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">h(p,q) = |p_x - q_x|+|p_y - q_y|
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></span></p>
+<p>####<strong>欧几里得距离（Euclidean Distance）</strong><br>
+**欧几里得距离（Euclidean Distance）**则是两点之间的直线距离，它是在平面直角坐标系上连接点两点之间的线段的长度，即两点距离的平方根。在二维平面坐标系中，欧几里得距离可以表示为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>p</mi><mo separator="true">,</mo><mi>q</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mi>x</mi></msub><mo>−</mo><msub><mi>q</mi><mi>x</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><msub><mi>p</mi><mi>y</mi></msub><mo>−</mo><msub><mi>q</mi><mi>y</mi></msub><mn>2</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">h(p,q) = \sqrt{(p_x - q_x)^2 + (p_y - q_y2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.5742em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2658em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">2</span></span></span><span style="top:-3.2258em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.88em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.88em' viewBox='0 0 400000 1944' preserveAspectRatio='xMinYMin slice'><path d='M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5742em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="曼哈顿距离和欧几里得距离的平均值"><strong>曼哈顿距离和欧几里得距离的平均值</strong></h4>
+<h4 id="切比雪夫距离"><strong>切比雪夫距离</strong></h4>
+<p>切比雪夫距离或是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi mathvariant="normal">∞</mi></msub></mrow><annotation encoding="application/x-tex">L_∞</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (无穷范数) 度量是向量空间中的一种度量，二个点之间的距离定义为其各座标数值差的最大值。<br>
+若二个向量或二个点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>，其座标分别为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 及 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 则两者之间的切比雪夫距离定义如下：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>D</mi><mrow><mi>C</mi><mi>h</mi><mi>e</mi><mi>b</mi><mi>y</mi><mi>s</mi><mi>h</mi><mi>e</mi><mi>v</mi></mrow></msub><mo stretchy="false">(</mo><mi>p</mi><mo separator="true">,</mo><mi>q</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>i</mi></msub><mo>−</mo><msub><mi>q</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D_{Chebyshev}(p, q) := max_i(|p_i - q_i|)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight">ys</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ma</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span></p>
+<p>这也等于以下<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">L_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 度量的极值：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mrow><mi>lim</mi><mo>⁡</mo></mrow><mrow><mi>k</mi><mo>→</mo><mn>0</mn></mrow></munder><mo stretchy="false">(</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mrow><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>i</mi></msub><mo>−</mo><msub><mi>q</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow><mi>k</mi></msup><msup><mo stretchy="false">)</mo><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\lim_{k\to0}(\sum_{i=1}^n{|p_i-q_i|}^k)^{1/k}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-2.3479em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">→</span><span class="mord mtight">0</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7521em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.989em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1/</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<blockquote>
+<p>因为笔者实力有限，对于切比雪夫距离理解不够，其他有错的地方还请您见谅，您可以参阅**<a target="_blank" rel="noopener" href="https://blog.nowcoder.net/n/d3761629c51649e897e7d3ff2a72763d">这篇文章</a>**</p>
+</blockquote>
+</details>
+<h2 id="总结BFS、Dijkstra、A">总结BFS、Dijkstra、A*</h2>
+<ul>
+<li>总的来说，BFS算法适用于无加权图或权值相等的有加权图，Dijkstra算法适用于权值为正的有加权图，A*算法虽然时间复杂度较高，但可以更快地找到最短路径或近似最短路径，适用于一些对路径搜索灵活度和效率要求较高的情况下</li>
+</ul>
+<h2 id="IDA">IDA*</h2>
+<ul>
+<li>**IDA***本质上就是A*加上了<code>迭代加深</code>的方式，每次限制深度，在每个深度上进行搜索，以尽可能地搜索所有可能的组合。与A*不同的是，它更像是DFS的一种优化，在处理较宽或无限宽的树时，A*就显得力不从心了，IDA*虽然在迭代加深时会重复多次搜索，但带来的收益也是不容小觑的，在信息学竞赛中，IDDFS算法常用于解决搜索深度未知或搜索深度很深的问题。</li>
+</ul>
+<h2 id="总结">总结</h2>
+<ul>
+<li>搜索算法是信息学竞赛中必须掌握的重要算法之一，掌握DFS、BFS等经典搜索算法，以及它们的改进算法，如IDDFS、A*等，能够帮助我们更加高效地解决各种搜索问题。在实践过程中，我们应该注重总结不同问题的模型，降低问题转化到搜索算法的复杂度，避免无效的搜索，提高搜索算法的效率。</li>
+</ul>
+</article><div class="post-copyright"><i class="fa-solid fa-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">原创</a><a class="post-copyright-title"><span>搜索算法详解</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"></span><a class="link" href="http://blog.EraYes.top">EraYes</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a class="link" href="http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</a></span><span class="copy-button" onclick="rm.copyPageUrl('http://blog.erayes.top/2023/07/13/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/')"><i class="fa-solid fa-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请获取<a href="http://blog.EraYes.top" target="_blank">EraYes</a>许可 ！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/13/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58d61ddac507cc90da3c.webp" onerror="onerror=null;src='/img/avatar.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">树状数组</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/13/%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58d81ddac507cc90dcfc.webp" onerror="onerror=null;src='/img/avatar.webp'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">重载操作符</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fa-solid fa-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/13/RMQ%E9%97%AE%E9%A2%98%E4%B8%8EST%E7%AE%97%E6%B3%95/" title="RMQ问题与ST算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58991ddac507cc907f2b.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">RMQ问题与ST算法</div></div></a></div><div><a href="/2023/07/13/goto%E8%AF%AD%E5%8F%A5/" title="goto语句"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58da1ddac507cc90df73.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">goto语句</div></div></a></div><div><a href="/2023/07/13/template%E6%A8%A1%E6%9D%BF/" title="template模板"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e61ddac507cc90f265.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">template模板</div></div></a></div><div><a href="/2023/07/13/%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="并查集"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58981ddac507cc907e7c.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">并查集</div></div></a></div><div><a href="/2023/07/13/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" title="最小生成树"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf589a1ddac507cc90818b.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">最小生成树</div></div></a></div><div><a href="/2023/07/13/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" title="树状数组"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58d61ddac507cc90da3c.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fa-solid fa-calendar-days fa-fw"></i> 2023-07-13</div><div class="title">树状数组</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fa-solid fa-comments"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div><div><div id="gitcus-warp"> <script async="async" crossorigin="anonymous" data-category-id="DIC_kwDOJ7a_tM4CbQ5g" data-category="General" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-loading="lazy" data-mapping="title" data-reactions-enabled="1" data-repo-id="R_kgDOJ7a_tA" data-repo="ERA-YES/ERA-YES.github.io" data-strict="0" data-theme="transparent_dark" src="https://giscus.app/client.js"></script></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"><a class="avatar-img" href="/about"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="avatar"/></a><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="writing_hand" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270d.png">✍️</g-emoji><span>on Studying</span></div></div></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name Yunmobei">EraYes</h1><div class="author-info__description">因为你的存在，因为伟大的戏剧正在上演</div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="fa-solid fa-up-right"></i></a></div><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/ERA-YES" target="_blank" title="Github"><i class="fa-brands fa-github faa-tada"></i></a><a class="social-icon faa-parent animated-hover" href="mailto:k@erayes.top" target="_blank" title="Email"><i class="fa-solid fa-envelope faa-tada"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fa-solid fa-bullhorn EraYes-shake"></i><span>公告</span></div><div class="announcement_content">请参见【更新日志】</div></div><div class="card-widget EraYes-right-widget" id="flip-card"><div id="flip-wrapper"><div id="flip-content"><div class="face"><div class="left"><span class="title" id="saying-title">因为伟大的戏剧正在上演</span><br/><span class="desc" id="saying-from">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div></div><div class="back face"><div class="left"><span class="title">因为伟大的戏剧正在上演</span><br/><span class="desc">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp"/></div></div></div></div><script>function hitokoto() {
+  fetch("https://v1.hitokoto.cn/?c=d&c=i&c=k?max_length=24")
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("saying-title").innerText = data.hitokoto;
+        let auther = data.from_who;
+        if (auther === null) {
+          document.getElementById("saying-from").innerText = "From " + data.from;
+        } else {
+          document.getElementById("saying-from").innerText = "From " + data.from + " By " + auther;
+        }
+    })
+    .catch(console.error);
+}
+
+hitokoto();
+
+const reflash = document.getElementById("flip-wrapper");
+reflash.addEventListener("click", hitokoto);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fa-solid fa-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%B5%8C%E5%85%A5%E5%A6%82%E4%B8%8B"><span class="toc-number">1.</span> <span class="toc-text">网页嵌入如下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS"><span class="toc-number"></span> <span class="toc-text">DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number"></span> <span class="toc-text">BFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dijkstra"><span class="toc-number"></span> <span class="toc-text">Dijkstra</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A"><span class="toc-number"></span> <span class="toc-text">A*</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8F%91%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">启发函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%B7%9D%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">关于距离</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB%EF%BC%88Manhattan-Distance"><span class="toc-number">2.1.</span> <span class="toc-text">曼哈顿距离（Manhattan Distance)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB%E5%92%8C%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E8%B7%9D%E7%A6%BB%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC"><span class="toc-number">2.2.</span> <span class="toc-text">曼哈顿距离和欧几里得距离的平均值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB"><span class="toc-number">2.3.</span> <span class="toc-text">切比雪夫距离</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93BFS%E3%80%81Dijkstra%E3%80%81A"><span class="toc-number"></span> <span class="toc-text">总结BFS、Dijkstra、A*</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA"><span class="toc-number"></span> <span class="toc-text">IDA*</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">总结</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fa-solid fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf591f1ddac507cc914481.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Collections库"/></a><div class="content"><a class="title" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库">Collections库</a><time datetime="2023-10-22T14:55:02.000Z" title="发表于 2023-10-22 14:55:02">2023-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/vlfii/" title="vlfii"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e81ddac507cc90f555.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="vlfii"/></a><div class="content"><a class="title" href="/2023/07/18/vlfii/" title="vlfii">vlfii</a><time datetime="2023-07-18T13:23:17.000Z" title="发表于 2023-07-18 13:23:17">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/PCB-NFC/" title="PCB-NFC"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/PBC-NFC/1.jpg" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="PCB-NFC"/></a><div class="content"><a class="title" href="/2023/07/18/PCB-NFC/" title="PCB-NFC">PCB-NFC</a><time datetime="2023-07-18T12:47:27.000Z" title="发表于 2023-07-18 12:47:27">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc91136f.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Github Actions实现Hexo自动部署"/></a><div class="content"><a class="title" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署">Github Actions实现Hexo自动部署</a><time datetime="2023-07-17T09:04:46.000Z" title="发表于 2023-07-17 09:04:46">2023-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/AnyWebP/" title="AnyWebP"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc9112a4.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="AnyWebP"/></a><div class="content"><a class="title" href="/2023/07/16/AnyWebP/" title="AnyWebP">AnyWebP</a><time datetime="2023-07-16T09:37:27.000Z" title="发表于 2023-07-16 09:37:27">2023-07-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:k@erayes.top" title="email"><i class="fa-solid fa-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" onclick="EraYes.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/ERA_YES" title="Github"><i class="fa-brands fa-github"></i></a></div><div id="EraYes-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="图片来源" target="_blank" href="https://wallhaven.cc/">图片来源</a><a class="footer-item" title="SuperBed" target="_blank" href="https://www.superbed.cn">SuperBed</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="友链" target="_blank" href="/links/">友链</a><a class="footer-item" title="标签" target="_blank" href="/tags/">标签</a><a class="footer-item" title="分类" target="_blank" href="/categories/">分类</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="fa-solid fa-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2024 By <a class="footer-bar-link" href="http://blog.EraYes.top" title="EraYes" target="_blank">EraYes</a></div></div><div id="footer-type-tips"></div><script src="https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  var configStrings = ["因为你的存在，因为伟大的戏剧在上演，因为你可以奉献一首诗","That you are here,that life exists and identity,that the powerful play goes on and you may contribute a verse"];
+  var typed = new Typed("#footer-type-tips", {
+    strings: configStrings,
+    startDelay: parseInt('200'),
+    backDelay: parseInt('2000'),
+    typeSpeed: parseInt('100'),
+    loop: 'true' === 'true',
+    backSpeed: parseInt('20')
+  });
+});</script></div><div class="footer-bar-right"><a class="footer-bar-link" href="/null"></a><a class="footer-bar-link" href="/null"></a></div></div></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='img/avatar.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fa-solid fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fa-solid fa-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fa-solid fa-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fa-solid fa-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fa-solid fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fa-solid fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fa-solid fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fa-solid fa-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="fa-solid fa-spinner EraYes-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+console.log = function () {};
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+});</script><script async src="/EraYes/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/katex@0.16.0/dist/katex.min.css"><script src="https://npm.elemecdn.com/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    EraYes.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: function () {
+        EraYes.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runFn)
+  }
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) EraYes.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: '',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"meta":["nick","mail","link"],"locale":{"placeholder":"生活明朗，万物可爱"}}))
+  }
+
+  const walineCSSLoad = document.getElementById('waline-css')
+
+  if (typeof Waline === 'object') {
+    walineCSSLoad ? initWaline() : getCSS('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.css','waline-css').then(initWaline)
+  }
+  else {
+    getCSS('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.css','waline-css').then(() => {
+      getScript('https://npm.elemecdn.com/@waline/client@2.14.9/dist/waline.js').then(initWaline)
+    })
+  }
+}
+
+if ('Twikoo' === 'Waline' || !false) {
+  if (false) EraYes.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${EraYes.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | EraYes")[0];
+EraYes.initIndexEssay();
+EraYes.changeTimeInEssay();
+EraYes.removeBodyPaceClass();
+EraYes.qrcodeCreate();
+EraYes.changeTimeInAlbumDetail();
+EraYes.reflashEssayWaterFall();
+EraYes.sayhi();
+EraYes.addNavBackgroundInit();
+EraYes.setValueToBodyType();
+EraYes.catalogActive();
+EraYes.tagsPageActive();
+EraYes.categoriesBarActive();
+EraYes.topCategoriesBarScroll();
+EraYes.getCustomPlayList();
+EraYes.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.7/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div></body></html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>EraYes</title><meta name="author" content="EraYes"><meta name="copyright" content="EraYes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="EraYes"><meta name="application-name" content="EraYes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="website">
+<meta property="og:title" content="EraYes">
+<meta property="og:url" content="http://blog.erayes.top/index.html">
+<meta property="og:site_name" content="EraYes">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.erayes.top/img/avatar.webp">
+<meta property="article:author" content="EraYes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.erayes.top/img/avatar.webp"><link rel="shortcut icon" href="/img/avatar.webp"><link rel="canonical" href="http://blog.erayes.top/"><link rel="preconnect" href="//npm.elemecdn.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'EraYes',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-01-28 03:11:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="EraYes"><div id="web_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="fa-solid fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.erayes.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title Yunmobei">EraYes</div><i class="fa-solid fa-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:EraYes.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="站内搜索" accesskey="s"><i class="fa-solid fa-magnifying-glass"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="浅色和深色模式转换" onclick="EraYes.switchDarkMode()"><i class="fa-solid fa-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><input id="center-console" type="checkbox"/><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="fa-solid fa-arrow-up"></i><span id="percent" onclick="EraYes.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fa-solid fa-bars"></i></a></div></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="topInfo"><div class="topGroup"><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/03/hello-world/" title="Hello World"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58951ddac507cc907a03.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58951ddac507cc907a03.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/03/hello-world/" title="Hello World">Hello World</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/13/2023.5 路桥中学高一期末程序素养检测/" title="2023.5 路桥中学高一期末程序素养检测"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58f91ddac507cc910daf.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58f91ddac507cc910daf.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/13/2023.5 路桥中学高一期末程序素养检测/" title="2023.5 路桥中学高一期末程序素养检测">2023.5 路桥中学高一期末程序素养检测</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/16/AnyWebP/" title="AnyWebP"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58fd1ddac507cc9112a4.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc9112a4.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/16/AnyWebP/" title="AnyWebP">AnyWebP</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/10/22/Collections库/" title="Collections库"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf591f1ddac507cc914481.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf591f1ddac507cc914481.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/10/22/Collections库/" title="Collections库">Collections库</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/17/Github Actions实现Hexo自动部署/" title="Github Actions实现Hexo自动部署"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58fd1ddac507cc91136f.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc91136f.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/17/Github Actions实现Hexo自动部署/" title="Github Actions实现Hexo自动部署">Github Actions实现Hexo自动部署</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/13/KaTeX/" title="KaTeX"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58ea1ddac507cc90f80e.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58ea1ddac507cc90f80e.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/13/KaTeX/" title="KaTeX">KaTeX</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/18/PCB-NFC/" title="PCB-NFC"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/PBC-NFC/1.jpg" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/PBC-NFC/1.jpg"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/18/PCB-NFC/" title="PCB-NFC">PCB-NFC</a></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="2023/07/13/RMQ问题与ST算法/" title="RMQ问题与ST算法"><span class="recent-post-top-text">荐</span><img class="post_bg" onerror="https://pic.imgdb.cn/item/64bf58991ddac507cc907f2b.webp" alt="" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58991ddac507cc907f2b.webp"></a></div><div class="recent-post-info"><a class="article-title" href="2023/07/13/RMQ问题与ST算法/" title="RMQ问题与ST算法">RMQ问题与ST算法</a></div></div><a class="todayCard" id="todayCard" href="/about/" style="z-index: 1;"><div class="todayCard-info"><div class="todayCard-tips">关于我</div><div class="todayCard-title">About-me</div></div><div class="todayCard-cover" style="background: url(https://pic.imgdb.cn/item/64bf58e51ddac507cc90f128.webp) no-repeat center /cover"></div><div class="banner-button-group"><div class="banner-button" onclick="event.stopPropagation();event.preventDefault();EraYes.hideTodayCard();"><i class="fa-solid fa-arrow-circle-right"></i><span class="banner-button-text">更多推荐</span></div></div></a></div></div><div id="bannerGroup"><div id="random-banner"><div class="banners-title"><div class="banners-title-big">因为伟大的戏剧正在上演</div><div class="banners-title-big">因为你可以献上一首诗。</div><div class="banners-title-small">EraYes.top</div></div><div id="skills-tags-group-all"><div class="tags-group-wrapper"><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #339933"><img class="no-lightbox" title="Node" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/nodedotjs.svg" size="60px"></div><div class="tags-group-icon" style="background: #3776AB"><img class="no-lightbox" title="Python" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/python.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #4FC08D"><img class="no-lightbox" title="Vue" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/vuedotjs.svg" size="60px"></div><div class="tags-group-icon" style="background: #F7DF1E"><img class="no-lightbox" title="JavaScript" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/javascript.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #1572B6"><img class="no-lightbox" title="CSS3" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/css3.svg" size="60px"></div><div class="tags-group-icon" style="background: #E34F26"><img class="no-lightbox" title="HTML" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/html5.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #F05032"><img class="no-lightbox" title="Git" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/git.svg" size="60px"></div><div class="tags-group-icon" style="background: #181717"><img class="no-lightbox" title="GitHub" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/github.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #A8B9CC"><img class="no-lightbox" title="C" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/c.svg" size="60px"></div><div class="tags-group-icon" style="background: #00599C"><img class="no-lightbox" title="C++" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/cplusplus.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #239120"><img class="no-lightbox" title="C#" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/csharp.svg" size="60px"></div><div class="tags-group-icon" style="background: #FFFFFF"><img class="no-lightbox" title="Unity" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/unity.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #55C2E1"><img class="no-lightbox" title="Cocos" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/cocos.svg" size="60px"></div><div class="tags-group-icon" style="background: #0078D6"><img class="no-lightbox" title="Win10" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/windows.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #339933"><img class="no-lightbox" title="Node" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/nodedotjs.svg" size="60px"></div><div class="tags-group-icon" style="background: #3776AB"><img class="no-lightbox" title="Python" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/python.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #4FC08D"><img class="no-lightbox" title="Vue" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/vuedotjs.svg" size="60px"></div><div class="tags-group-icon" style="background: #F7DF1E"><img class="no-lightbox" title="JavaScript" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/javascript.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #1572B6"><img class="no-lightbox" title="CSS3" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/css3.svg" size="60px"></div><div class="tags-group-icon" style="background: #E34F26"><img class="no-lightbox" title="HTML" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/html5.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #F05032"><img class="no-lightbox" title="Git" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/git.svg" size="60px"></div><div class="tags-group-icon" style="background: #181717"><img class="no-lightbox" title="GitHub" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/github.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #A8B9CC"><img class="no-lightbox" title="C" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/c.svg" size="60px"></div><div class="tags-group-icon" style="background: #00599C"><img class="no-lightbox" title="C++" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/cplusplus.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #239120"><img class="no-lightbox" title="C#" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/csharp.svg" size="60px"></div><div class="tags-group-icon" style="background: #FFFFFF"><img class="no-lightbox" title="Unity" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/unity.svg" size="60px"></div></div><div class="tags-group-icon-pair"><div class="tags-group-icon" style="background: #55C2E1"><img class="no-lightbox" title="Cocos" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/cocos.svg" size="60px"></div><div class="tags-group-icon" style="background: #0078D6"><img class="no-lightbox" title="Win10" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/icons/svg/windows.svg" size="60px"></div></div></div></div></div><div class="categoryGroup"><div class="categoryItem" style="box-shadow:var(--EraYes-shadow-blue)"><a class="categoryButton blue" onclick="pjax.loadUrl(&quot;/categories/Cpp/&quot;);" href="javascript:void(0);"><span class="categoryButtonText">Cpp</span><i class="fa-solid fa-circle-nodes"></i></a></div><div class="categoryItem" style="box-shadow:var(--EraYes-shadow-red)"><a class="categoryButton red" onclick="pjax.loadUrl(&quot;/categories/Python/&quot;);" href="javascript:void(0);"><span class="categoryButtonText">Python</span><i class="fa-brands fa-python"></i></a></div><div class="categoryItem" style="box-shadow:var(--EraYes-shadow-green)"><a class="categoryButton green" onclick="pjax.loadUrl(&quot;/categories/Others/&quot;);" href="javascript:void(0);"><span class="categoryButtonText">Others</span><i class="fa-solid fa-bolt"></i></a></div></div></div><div id="categoryBar"><div class="category-bar" id="category-bar"><div id="catalog-bar"><div id="catalog-list"><div class="catalog-list-item" id="首页"><a href="/">首页</a></div>
+    <div class="catalog-list-item" id="/categories/Others/">
+      <a href="/categories/Others/">
+        Others
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/工具/">
+      <a href="/categories/工具/">
+        工具
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/Python/">
+      <a href="/categories/Python/">
+        Python
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/Hexo/">
+      <a href="/categories/Hexo/">
+        Hexo
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/Cpp/">
+      <a href="/categories/Cpp/">
+        Cpp
+      </a>
+    </div>
+    </div><div class="category-bar-next" id="category-bar-next" onclick="EraYes.scrollCategoryBarToRight()"><i class="fa-solid fa-angles-right"></i></div><a class="catalog-more" href="/categories/">更多</a></div></div></div><div class="recent-post-item lastestpost-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Python/">Python</a><a class="unvisited-post" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库" style="left: calc(44% + 85px);">未读</a></div><div class="post_cover left"><a href="/2023/10/22/Collections%E5%BA%93/" title="Collections库"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf591f1ddac507cc914481.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Collections库"></a></div><div class="recent-post-info"><span class="newPost">最新文章</span><a class="article-title" href="/2023/10/22/Collections%E5%BA%93/" title="Collections库">Collections库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-22T14:55:02.000Z" title="发表于 2023-10-22 14:55:02">2023-10-22</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Python</span></a></span></div><div class="content">Python Collections库详解
+Python的 collections 库提供了一些额外的数据结构，用于扩展内置的列表、元组和字典等数据类型。这些数据结构针对特定的使用场景进行了优化，可以极大地简化编程任务。在本篇文章中，我们将探索一些常用的 collections 库中的数据类型。
+defaultdict
+defaultdict 是 dict 的一个子类，它为缺失的键提供了默认值。当访问一个不存在的键时，不会引发 KeyError 错误，而是返回一个默认值。这在计数、分组元素或构建复杂数据结构时特别有用。
+使用示例：
+1234567&gt;&gt;&gt; from collections import defaultdict&gt;&gt;&gt; # 创建一个默认值为0的defaultdict&gt;&gt;&gt; counter = defaultdict(int)&gt;&gt;&gt; counter[&#x27;apple&#x27;] += 1&gt;&gt;&gt; counter[&#x27;banana&#x27;] += 1&gt;&gt;&gt; ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Python/">Python</a><a class="unvisited-post" href="/2023/07/18/vlfii/" title="vlfii">未读</a></div><div class="post_cover right"><a href="/2023/07/18/vlfii/" title="vlfii"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e81ddac507cc90f555.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="vlfii"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/18/vlfii/" title="vlfii">vlfii</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-18T13:23:17.000Z" title="发表于 2023-07-18 13:23:17">2023-07-18</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Python</span></a><a class="article-meta__tags" href="/tags/Github/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Github</span></a></span></div><div class="content">Vlfii
+玩小鸟飞飞F700随手写的
+图形化用起来太难受了
+幸好他们的源码是xml，那我就能霍霍啦
+
+    引用站外地址
+    
+        
+        
+            Vlfii 
+             Github开源链接 
+        
+        
+    
+    
+小鸟飞飞图形化编程的文本编程，针对于小鸟飞飞图形化编程群控软件，采用python构建，可直接引用为库运行，目前已实现大部分常用函数，正在更新中
+使用注意
+建议将库文件与源代码文件放在同一目录下
+使用前设置无人机列表、文件名、音乐名等:
+123456789101112131415from vlfii import *import vlfii#默认ip从&quot;192.168.31.101&quot;递增，传入第三参数以调整vlfii.DRONE = [    [x1, y1, [&quot;192.169.31.109&quot;]],    [x2, y2],    [x3, y3],    [x4, y4],    [x5, y5],]vlfii.FILE = &quo ...</div></div></div><div class="recent-post-item"><a class="unvisited-post" href="/2023/07/18/PCB-NFC/" title="PCB-NFC">未读</a><div class="post_cover left"><a href="/2023/07/18/PCB-NFC/" title="PCB-NFC"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/ERA-YES/PicBed@main/PBC-NFC/1.jpg" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="PCB-NFC"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/18/PCB-NFC/" title="PCB-NFC">PCB-NFC</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-18T12:47:27.000Z" title="发表于 2023-07-18 12:47:27">2023-07-18</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:33.000Z" title="更新于 2023-12-08 12:58:33">2023-12-08</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Github/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Github</span></a><a class="article-meta__tags" href="/tags/%E7%94%9F%E6%B4%BB/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>生活</span></a></span></div><div class="content">台州路桥中学PCB-NFC校园卡
+
+EraYes制作
+按照路中地图绘制，忽略部分细节，但保留了大部分代表性建筑，画了nfc线圈，焊接ic卡后基本可实现校园卡全部功能。
+正面电路都是装饰，无实际作用。背面是nfc线圈和个性化自定义空间
+工程内提供了空卡、线圈、地图、带注记的地图和我定制的个性化卡供参考
+无原理，地图就是原理
+
+结束BB
+前面都是写给别人看的，这里是写给自己人的
+最初想改造校卡是半学期前的事了，那时候就买来电烙铁之类的准备动手，再一个星期后我就把自己的校卡拆了，然后就搞坏了。。。
+后来这件事就又搁置了一段时间，知道最近在b站上刷到了用PCB板改装校卡的视频，恰好最近又在玩开发板之类的，这种DIY就深深地吸引了我，然后就花了整整两天来画这张地图。
+说说这张地图的漏洞吧
+
+
+我当初画的时候忘记画钟楼了(emm。但后来想到钟楼的占地面积极小，而且板子也不可以凸出来一块，所以就舍弃掉了。
+然后就是食堂画小了，因为把新男舍的比例搞错了，而女舍又是直接复制的男舍，所以就挤得食堂没地方了~~
+食堂旁边的一排电阻其实是车啦
+还有就是操场前，篮球场边，那块一直拆了建、建了拆的地方我也不知道是 ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a><a class="unvisited-post" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署">未读</a></div><div class="post_cover right"><a href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc91136f.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="Github Actions实现Hexo自动部署"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/17/Github%20Actions%E5%AE%9E%E7%8E%B0Hexo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Github Actions实现Hexo自动部署">Github Actions实现Hexo自动部署</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T09:04:46.000Z" title="发表于 2023-07-17 09:04:46">2023-07-17</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:32.000Z" title="更新于 2023-12-08 12:58:32">2023-12-08</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>前端</span></a><a class="article-meta__tags" href="/tags/Hexo/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Hexo</span></a><a class="article-meta__tags" href="/tags/Github/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Github</span></a></span></div><div class="content">Github Actions实现Hexo自动部署
+
+前言, 把 Hexo 博客部署在 Github Pages 时, 每次都要手动生成 public 文件或手动 Deploy , 对于经常性更新博客的人来说极不方便, 特别对于我这种处于博客创立初期需要频繁改动的人来说就更显麻烦了, 这时候 Github Actions 就特别适合我们
+
+教程环节
+
+    引用站外地址
+    
+        
+        
+            使用Github Action实现全自动部署 
+             教程转载自🧊Akilar の糖果屋 🍭 
+        
+        
+    
+    
+1、创建仓库
+分别创建两个 Github 仓库, 一个用于放 博客源码 , 可以选择私有库, 另一个公开库用于部署 Github Pages, 公开库命名为 &#123;你的Github账号名 + github.io&#125;
+怎么创建Github库我就不不教了, 这都不知道还是别玩了吧
+2、获取Token
+Github Actions 在执行相应的部署功能是需要一定的权限, ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><a class="unvisited-post" href="/2023/07/16/AnyWebP/" title="AnyWebP">未读</a></div><div class="post_cover left"><a href="/2023/07/16/AnyWebP/" title="AnyWebP"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fd1ddac507cc9112a4.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="AnyWebP"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/16/AnyWebP/" title="AnyWebP">AnyWebP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-16T09:37:27.000Z" title="发表于 2023-07-16 09:37:27">2023-07-16</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:32.000Z" title="更新于 2023-12-08 12:58:32">2023-12-08</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>前端</span></a><a class="article-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>工具</span></a></span></div><div class="content">AnyWebP
+Webp是什么
+Webp是一种Google开发的图像文件格式。WebP能以更小的文件大小，储存近乎相同却肥得多的png、jpg等文件格式，同时它还支持有损和无损压缩，以及动画和透明度，可以加快网页加载速度，减少带宽使用，并节省存储空间。目前，webp已经支持在大部分主流浏览器显示，不止作为png等的平替，更是一种上位选择。除了IE这种元老
+怎么获得WebP
+目前主流的图片网站都比较少有WebP格式的图片，但是当然我们可以转换或制作得到Webp。
+
+Adobe Photoshop、GIMP等图像编辑软件都支持导出Webp格式
+使用编程语言：如果您是开发人员，可以使用编程语言（如Python、Java等）中的图像处理库来生成WebP图像。这些库通常提供了将图像转换为WebP格式的功能
+在线转换工具：有许多在线转换工具可用于将其他图像格式转换为WebP。您可以搜索并使用这些工具之一，将您的图像文件上传并转换为WebP格式。
+
+在线转换工具
+
+这就是这篇博客的重点了
+
+AnyWebP
+AnyWebP 是一款非常优雅的 WebP 格式转换工具，支持从 WebP 转换为 JPG、P ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Others/">Others</a><a class="unvisited-post" href="/2023/07/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="读书笔记">未读</a></div><div class="post_cover right"><a href="/2023/07/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="读书笔记"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58fa1ddac507cc910e90.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="读书笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="读书笔记">读书笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T21:09:51.000Z" title="发表于 2023-07-13 21:09:51">2023-07-13</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%94%9F%E6%B4%BB/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>生活</span></a></span></div><div class="content">读书笔记
+
+种树最好的时间是十年前，其次是现在
+
+简介：
+
+我决定从今天开始记录我读书的过程（也可能是从几天前），记录我读的书，书的相关信息，我的读书方法，一些好句，我的心得。
+
+To-read List
+
+遇到好书不应该等着,而应该记下来:
+
+Reading：《乌合之众》 - By Gustave Le Bon
+我们始终有一种错觉，以为我们的感情源自于我们自己的内心。
+&lt;!–More are coming–!&gt;
+记录模板:
+
+《这是一本书》
+阅读时间：过过去-过去
+出版社：一家出版书的出版社
+作者： 一个写作的作者
+(译者：翻译文章的人)
+名句记录
+
+1
+2
+3
+
+读后感
+
+这里应有100字
+
+
+</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Others/">Others</a><a class="unvisited-post" href="/2023/07/13/2023.5%20%E8%B7%AF%E6%A1%A5%E4%B8%AD%E5%AD%A6%E9%AB%98%E4%B8%80%E6%9C%9F%E6%9C%AB%E7%A8%8B%E5%BA%8F%E7%B4%A0%E5%85%BB%E6%A3%80%E6%B5%8B/" title="2023.5 路桥中学高一期末程序素养检测">未读</a></div><div class="post_cover left"><a href="/2023/07/13/2023.5%20%E8%B7%AF%E6%A1%A5%E4%B8%AD%E5%AD%A6%E9%AB%98%E4%B8%80%E6%9C%9F%E6%9C%AB%E7%A8%8B%E5%BA%8F%E7%B4%A0%E5%85%BB%E6%A3%80%E6%B5%8B/" title="2023.5 路桥中学高一期末程序素养检测"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58f91ddac507cc910daf.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="2023.5 路桥中学高一期末程序素养检测"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/13/2023.5%20%E8%B7%AF%E6%A1%A5%E4%B8%AD%E5%AD%A6%E9%AB%98%E4%B8%80%E6%9C%9F%E6%9C%AB%E7%A8%8B%E5%BA%8F%E7%B4%A0%E5%85%BB%E6%A3%80%E6%B5%8B/" title="2023.5 路桥中学高一期末程序素养检测">2023.5 路桥中学高一期末程序素养检测</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T21:09:15.000Z" title="发表于 2023-07-13 21:09:15">2023-07-13</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span></div><div class="content">参考答案（个人编写）
+A
+12a, b = map(int, input().split( )) print(int(input())  - a + b) 
+B
+1print(&quot;%.2lf&quot; %(float(input()) * 9 / 5 + 32))
+C
+123456a = float(input())if a &gt; 3:    a = int(a)    print(((a + 1 - 3) * 2 + 10))else:    print(10)
+D
+123a = list(input())a.sort(reverse=True)print(int(&#x27;&#x27;.join(a)))
+E
+1234567891011121314151617a, b, operator = input().split()a, b = int(a), int(b)if operator == &#x27;+&#x27;:    print(a + b)elif operator == &#x27;-&#x27;:    print(a - b)elif operat ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Others/">Others</a><a class="unvisited-post" href="/2023/07/13/KaTeX/" title="KaTeX">未读</a></div><div class="post_cover right"><a href="/2023/07/13/KaTeX/" title="KaTeX"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58ea1ddac507cc90f80e.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="KaTeX"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/13/KaTeX/" title="KaTeX">KaTeX</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T21:08:51.000Z" title="发表于 2023-07-13 21:08:51">2023-07-13</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-28T03:11:25.000Z" title="更新于 2024-01-28 03:11:25">2024-01-28</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>数学</span></a></span></div><div class="content">KaTeX语法介绍
+KaTeX是一个流行的用于Web上高质量数学排版的渲染库。它与LaTeX语法兼容，但具有自己的一套渲染方程式的规则。下面是一份常用的KaTeX语法指南。
+基础语法
+要使用KaTeX渲染方程式，您可以使用两个美元符号把方程式括起来，就像这样：
+$f(x) = x^2 - 3x + 5$
+这将渲染为：f(x)=x2−3x+5f(x) = x^2 - 3x + 5f(x)=x2−3x+5
+基本数学运算
+KaTeX支持广泛的数学运算，包括：
+
+指数： x^n 或 x^&#123;n&#125;
+下标： x_n 或 x_&#123;n&#125;
+分数： \frac&#123;numerator&#125;&#123;denominator&#125; ，或可选 \dfrac 以获得一个更大的分式
+例如：
+$x^&#123;2n&#125;$ $C_&#123;n-1&#125;$ $\frac&#123;3&#125;&#123;4&#125;$
+
+它们将分别渲染为：
+
+
+
+x2nx^{2n}x2n
+Cn−1C_{n-1}Cn−1​
+34\frac{3}{4}43​
+
+
+
+ ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Python/">Python</a><a class="unvisited-post" href="/2023/07/13/datetime%E5%BA%93/" title="datetime库">未读</a></div><div class="post_cover left"><a href="/2023/07/13/datetime%E5%BA%93/" title="datetime库"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e91ddac507cc90f66d.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="datetime库"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/13/datetime%E5%BA%93/" title="datetime库">datetime库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T21:08:20.000Z" title="发表于 2023-07-13 21:08:20">2023-07-13</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:32.000Z" title="更新于 2023-12-08 12:58:32">2023-12-08</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Python</span></a></span></div><div class="content">Python datetime库
+
+datetime是Python内置的一个处理日期和时间的标准库，可以轻松处理日期和时间，也可以进行日期和时间的格式化操作。下面是一些datetime库中常用的方法：
+
+
+datetime.date：返回表示日期的对象。
+datetime.time：返回表示时间的对象。
+datetime.datetime：返回日期和时间的对象。
+datetime.timedelta：表示两个日期或时间之间的差异（例如，两个日期之间的天数）。
+datetime.strptime()：把格式化的字符串转换为日期对象。
+datetime.strftime()：把日期对象格式化为字符串。
+datetime.timetuple():返回一个 time.struct_time对象，具有包含九个元素的命名元组接口。
+
+time.struct_time 对象中存在以下值：
+
+
+
+索引
+属性
+值
+
+
+
+
+0
+tm_year
+(例如，1993)
+
+
+1
+tm_mon
+范围 [1, 12)
+
+
+2
+tm_mday
+范围 [1, 31)
+
+
+3
+tm_hour
+范围 [0, 23)
+
+
+4
+ ...</div></div></div><div class="recent-post-item"><div class="article-meta__categories__box"><a class="article-meta__categories" href="/categories/Cpp/">Cpp</a><a class="unvisited-post" href="/2023/07/13/template%E6%A8%A1%E6%9D%BF/" title="template模板">未读</a></div><div class="post_cover right"><a href="/2023/07/13/template%E6%A8%A1%E6%9D%BF/" title="template模板"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/64bf58e61ddac507cc90f265.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="template模板"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/13/template%E6%A8%A1%E6%9D%BF/" title="template模板">template模板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="fa-solid fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-13T20:40:05.000Z" title="发表于 2023-07-13 20:40:05">2023-07-13</time><span class="article-meta-separator"></span><i class="fa-solid fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-08T12:58:33.000Z" title="更新于 2023-12-08 12:58:33">2023-12-08</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Cpp/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>Cpp</span></a><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1"><span> <i class="fa-solid fa-hashtag"></i>算法</span></a></span></div><div class="content">#C++ 模板
+
+模板是泛型编程的基础，泛型编程即以一种独立于任何特定类型的方式编写代码。
+
+##函数模板
+
+模板函数定义的一般形式如下所示：
+
+1234template &lt;typename type&gt; ret-type func-name(parameter list)&#123;   // 函数的主体&#125;
+在这里，type 是函数所使用的数据类型的占位符名称。
+###实例
+
+下面是函数模板的实例，返回两个数中的最大值：
+
+12345678910111213141516171819202122#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;template &lt;typename T&gt;inline T const&amp; Max (T const&amp; a, T const&amp; b) &#123;     return a &lt; b ? b:a; &#125; int main ()&#123;    int i = 39;    int j = 20; ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#category-bar">2</a><a class="extend next" rel="next" href="/page/2/#category-bar"><div class="pagination_tips_next">下页</div><i class="fa-solid fa-angle-right page-angle"></i></a><div class="toPageGroup"><input id="toPageText" oninput="value=value.replace(/[^0-9]/g,'')" maxlength="3" onkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'')" aria-label="toPage"><a id="toPageButton" onclick="EraYes.toPage()"><i class="fa-solid fa-angles-right page-angle"></i></a></div></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"><a class="avatar-img" href="/about"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/avatar.webp'" alt="avatar"/></a><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="writing_hand" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270d.png">✍️</g-emoji><span>on Studying</span></div></div></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name Yunmobei">EraYes</h1><div class="author-info__description">因为你的存在，因为伟大的戏剧正在上演</div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="fa-solid fa-up-right"></i></a></div><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/ERA-YES" target="_blank" title="Github"><i class="fa-brands fa-github faa-tada"></i></a><a class="social-icon faa-parent animated-hover" href="mailto:k@erayes.top" target="_blank" title="Email"><i class="fa-solid fa-envelope faa-tada"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fa-solid fa-bullhorn EraYes-shake"></i><span>公告</span></div><div class="announcement_content">请参见【更新日志】</div></div><div class="card-widget EraYes-right-widget" id="flip-card"><div id="flip-wrapper"><div id="flip-content"><div class="face"><div class="left"><span class="title" id="saying-title">因为伟大的戏剧正在上演</span><br/><span class="desc" id="saying-from">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div></div><div class="back face"><div class="left"><span class="title">因为伟大的戏剧正在上演</span><br/><span class="desc">因为你可以献上一首诗</span><i class="fa-solid fa-play"></i></div><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp"/></div></div></div></div><script>function hitokoto() {
+  fetch("https://v1.hitokoto.cn/?c=d&c=i&c=k?max_length=24")
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("saying-title").innerText = data.hitokoto;
+        let auther = data.from_who;
+        if (auther === null) {
+          document.getElementById("saying-from").innerText = "From " + data.from;
+        } else {
+          document.getElementById("saying-from").innerText = "From " + data.from + " By " + auther;
+        }
+    })
+    .catch(console.error);
+}
+
+hitokoto();
+
+const reflash = document.getElementById("flip-wrapper");
+reflash.addEventListener("click", hitokoto);</script><div class="sticky_layout"><div class="card-widget"><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Cpp/"><span class="card-category-list-name">Cpp</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Others/"><span class="card-category-list-name">Others</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fa-solid fa-folder-open"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Cpp/" style="font-size: 1.05rem; font-weight: 500; color: var(--EraYes-lighttext)">Cpp<sup>9</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>2</sup></a><a href="/tags/Python/" style="font-size: 1.05rem; font-weight: 500; color: var(--EraYes-lighttext)">Python<sup>3</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.05rem;">生活<sup>2</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>9</sup></a></div></div><hr/><div class="card-archives"><div class="item-headline"><i class="fa-solid fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li></ul></div><hr/><div class="card-webinfo"><div class="item-headline"><i class="fa-solid fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">19</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-07-03T00:00:00.000Z"><i class="fa-solid fa-spinner EraYes-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">16.5k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-28T03:11:40.426Z"><i class="fa-solid fa-spinner EraYes-spin"></i></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:k@erayes.top" title="email"><i class="fa-solid fa-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" onclick="EraYes.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="img/avatar.webp" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/ERA_YES" title="Github"><i class="fa-brands fa-github"></i></a></div><div id="EraYes-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="图片来源" target="_blank" href="https://wallhaven.cc/">图片来源</a><a class="footer-item" title="SuperBed" target="_blank" href="https://www.superbed.cn">SuperBed</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="友链" target="_blank" href="/links/">友链</a><a class="footer-item" title="标签" target="_blank" href="/tags/">标签</a><a class="footer-item" title="分类" target="_blank" href="/categories/">分类</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="fa-solid fa-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2024 By <a class="footer-bar-link" href="http://blog.EraYes.top" title="EraYes" target="_blank">EraYes</a></div></div><div id="footer-type-tips"></div><script src="https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  var configStrings = ["因为你的存在，因为伟大的戏剧在上演，因为你可以奉献一首诗","That you are here,that life exists and identity,that the powerful play goes on and you may contribute a verse"];
+  var typed = new Typed("#footer-type-tips", {
+    strings: configStrings,
+    startDelay: parseInt('200'),
+    backDelay: parseInt('2000'),
+    typeSpeed: parseInt('100'),
+    loop: 'true' === 'true',
+    backSpeed: parseInt('20')
+  });
+});</script></div><div class="footer-bar-right"><a class="footer-bar-link" href="/null"></a><a class="footer-bar-link" href="/null"></a></div></div></div></footer></div></div></div><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='img/avatar.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="fa-solid fa-envelope faa-tada"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="fa-solid fa-book faa-tada"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="fa-solid fa-tag faa-tada"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:17px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="fa-solid fa-user-group faa-tada"></i><span> 友人</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-31px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="fa-regular fa-face-laugh-wink faa-tada"></i><span> 本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/updates/"><i class="fa-solid fa-newspaper faa-tada"></i><span> 日志</span></a></li></ul></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fa-solid fa-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fa-solid fa-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fa-solid fa-gear"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fa-solid fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fa-solid fa-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="fa-solid fa-spinner EraYes-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+console.log = function () {};
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+});</script><script async src="/EraYes/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="EraYes"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${EraYes.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | EraYes")[0];
+EraYes.initIndexEssay();
+EraYes.changeTimeInEssay();
+EraYes.removeBodyPaceClass();
+EraYes.qrcodeCreate();
+EraYes.changeTimeInAlbumDetail();
+EraYes.reflashEssayWaterFall();
+EraYes.sayhi();
+EraYes.addNavBackgroundInit();
+EraYes.setValueToBodyType();
+EraYes.catalogActive();
+EraYes.tagsPageActive();
+EraYes.categoriesBarActive();
+EraYes.topCategoriesBarScroll();
+EraYes.getCustomPlayList();
+EraYes.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.7/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div></body></html>
